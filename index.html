@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Experience Research Survey</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #ffffff;
+      width: 400px;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 14px;
+      color: #555;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: #2f80ed;
+      color: white;
+      font-size: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+      text-align: center;
+    }
+    .reveal h1 {
+      color: #e6005c;
+    }
+    #qrcode {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="survey">
+  <h2>User Experience Survey</h2>
+  <p>This short survey is conducted for academic research purposes only.</p>
+
+  <p><strong>1. How satisfied are you with your current relationship status?</strong></p>
+  <button onclick="next()">Very Satisfied</button>
+  <button onclick="next()">Satisfied</button>
+
+  <p style="margin-top:15px;"><strong>2. Do you enjoy surprises?</strong></p>
+  <button onclick="next()">Yes</button>
+  <button onclick="next()">Sometimes</button>
+
+  <p style="margin-top:15px;"><strong>Share this survey:</strong></p>
+  <div id="qrcode"></div>
+</div>
+
+<div class="container hidden reveal" id="reveal">
+  <h1>Important Final Question ❤️</h1>
+  <p>Based on the results of this survey...</p>
+  <h2>Will you be my Valentine? 💌</h2>
+  <button onclick="alert('Best survey response ever ❤️')">YES 💕</button>
+</div>
+
+<script>
+  let clicks = 0;
+  function next() {
+    clicks++;
+    if (clicks >= 3) {
+      document.getElementById("survey").classList.add("hidden");
+      document.getElementById("reveal").classList.remove("hidden");
+    }
+  }
+
+  // Generate QR code for sharing the survey
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: window.location.href,
+    width: 128,
+    height: 128
+  });
+</script>
+
+</body>
+</html>
