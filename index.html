@@ -71,6 +71,9 @@
       color: #555;
       margin-bottom: 40px;
     }
+    .hero .button {
+      margin-top: 20px;
+    }
     .message-section {
       background: rgba(255, 255, 255, 0.9);
       border-radius: 20px;
@@ -128,6 +131,9 @@
       justify-content: center;
       flex-wrap: wrap;
     }
+    .hidden {
+      display: none;
+    }
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -155,9 +161,10 @@
     <section class="hero">
       <h1>Happy Valentine's Day, My Love</h1>
       <p>Every moment with you is a treasure I hold dear...</p>
+      <button class="button" onclick="showMessage()">Continue to My Message ❤️</button>
     </section>
 
-    <section class="message-section">
+    <section class="message-section hidden">
       <h2>A Heartfelt Message</h2>
       <div class="love-message">
         <p>I know it's been a week since the incident, and I'm deeply grateful that you're still here with me—supporting me and helping me recover from everything I've been going through. I will cherish this forever.</p>
@@ -166,13 +173,14 @@
         <br>
         <p>I love you, baby.</p>
       </div>
+      <button class="button" onclick="showProposal()">Continue 💕</button>
     </section>
 
-    <section class="proposal-section">
+    <section class="proposal-section hidden">
       <h2>Will You Be My Valentine? 💌</h2>
       <div class="buttons">
         <button class="button" onclick="celebrate()">YES 💕</button>
-        <button class="button" onclick="showMessage('Of course! Every day with you is Valentine's Day!')">Maybe 🤔</button>
+        <button class="button" onclick="showAlert('Of course! Every day with you is Valentine\'s Day!')">Maybe 🤔</button>
       </div>
     </section>
   </div>
@@ -217,8 +225,22 @@
       alert('Thank you for saying YES! I love you more than words can express! ❤️');
     }
 
-    // Show message for other buttons
-    function showMessage(msg) {
+    // Show message section
+    function showMessage() {
+      const section = document.querySelector('.message-section');
+      section.classList.remove('hidden');
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Show proposal section
+    function showProposal() {
+      const section = document.querySelector('.proposal-section');
+      section.classList.remove('hidden');
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Show alert for other buttons
+    function showAlert(msg) {
       alert(msg);
     }
 
